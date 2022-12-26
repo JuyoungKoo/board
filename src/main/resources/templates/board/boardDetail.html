@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/boardRegist.css}">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>게시글상세</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+	<script>
+		const message = '[[${message}]]';
+		message && alert(message);
+	</script>
+</head>
+
+<body id="page-top">
+
+
+        <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Board<sup>2</sup></div>
+            </a>
+            
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active" onclick="location.href='/boardList'">
+                <a class="nav-link">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>게시글목록</span></a>
+            </li>
+              <!-- Nav Item - Charts -->
+            <li class="nav-item" onclick="location.href='/boardRegist'">
+                <a class="nav-link">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>게시글등록</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                 <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">JuyoungKoo</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                        <div>
+                          <div>
+							<div>
+								<h1 style="margin-top:50px; margin-left:30px;">게시글상세</h1>
+								<table class="table" style="margin-top:60px;">
+								<thead>
+									<tr>
+										<td style="font-weight: bold;" align="right">No</td>
+										<td><p th:text="${ board.boardCode }"></p></td>
+										<td style="font-weight: bold;" align="right">게시글유형</td>
+										<td><p th:text="${ board.boardType.boardType }"></p></td>
+										<td style="font-weight: bold;" align="right">작성자</td>
+										<td><p th:text="${ board.boardWriter }"></p></td>
+										<td style="font-weight: bold;" align="right">작성일</td>
+										<td><p th:text="${ board.boardRegistDate }"></p></td>
+									</tr>
+									<tr>
+										<td style="font-weight: bold;" align="right">제목</td>
+										<td colspan="7"><p th:text="${ board.boardTitle }"></p></td>
+									</tr>
+									<tr>
+										<td style="font-weight: bold;" align="right">내용</td>
+										<td colspan="7"><textarea  name="body" cols="170" rows="6"
+							     			 style="resize: none;" readonly th:text="${ board.boardContent }"></textarea></td>
+									</tr>
+									</thead>
+								</table>
+								
+								<div align="center" style= "margin-bottom:40px; margin-top:40px;">
+									<form th:action="@{/boardDelete}" method="post">
+										<button type="button"onclick="location.href='/boardList'" class="buttonBlue">목록</button>
+										<button type="button"th:onclick= "|location.href='/boardModify?boardCode=${board.boardCode}'|" class="buttonBlue">수정</button>
+										<input type="hidden" name = "boardCode" th:value="${ board.boardCode }"/>
+										<input type="hidden" id="inputBox" name="boardStatus" value="DELETED">
+										<input type="submit" value="삭제" class="buttonRed">
+									</form>
+								</div>
+								
+								
+                            </div>
+                           	<!-- 댓글 내용 출력용 table -->
+								<table id="reviewResult" class="table" style="margin-bottom:20px;"></table>
+								
+									<!-- 댓글 작성용 table -->
+								<table style="margin:auto;">
+									<tr>
+										<td>댓글</td>
+										<td><textarea cols="60" rows="3" id="reviewContent" style="resize:none; margin-left:30px;"></textarea></td>
+										<td><input type="hidden" id="boardCode" th:value="${board.boardCode}"/></td>
+										<td><button type="button" id="registReview" style="height:70px; width:90px;" class="buttonBlue">등록</button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<script>
+							/* 댓글 관련 로직 - 비동기 요청 */
+							loadReview();
+							
+							/* 댓글 로드 */
+							function loadReview() {
+								
+								if(document.getElementById("boardCode")) {
+									
+									fetch("/reviewList?refBoardCode=" + document.getElementById("boardCode").value)
+									.then(result => result.json()) 
+									.then(data => {
+										makeReviewTable(data);
+										console.log(data)
+									})
+									.catch(error => console.log(error));
+									
+								}
+								
+							}
+							/* 댓글 작성 */
+							if(document.getElementById("registReview")) {
+								
+								const $registReview = document.getElementById("registReview");
+								const $reviewContent = document.getElementById("reviewContent");
+								
+								$registReview.onclick = function() {
+									
+									if(!$reviewContent.value.trim()) {
+										alert("댓글을 입력해주세요");
+										return;
+									}
+									
+									const boardCode = document.getElementById("boardCode").value;
+									const reviewContent = $reviewContent.value;
+									
+									fetch("/registReview", {
+										method: "POST",
+										headers: {
+											'Content-Type': 'application/json;charset=UTF-8'
+										},
+										body: JSON.stringify({
+											refBoardCode : boardCode,
+											reviewContent : reviewContent
+										})
+									})
+									.then(data => {
+										console.log(data);
+										$reviewContent.value = '';
+										loadReview();
+									})
+									.catch(error => console.log(error));
+								}
+							}
+							
+							/* 댓글 삭제 */
+							function deleteReview(reviewCode) {
+								
+								fetch("/deleteReview", {
+									method: "POST",
+									headers: {
+										'Content-Type': 'application/json; charset=UTF-8'
+									},
+									body: JSON.stringify({
+										reviewCode: reviewCode
+									})
+								})
+								.then(result => {
+									console.log(result);
+									loadReview();
+								})
+								.catch(error => console.log(error));
+								
+							}
+							
+							/* 댓글 데이터 테이블화 하는 함수 */
+							function makeReviewTable(reviewList) {
+								
+								const $table = document.querySelector("#reviewResult");
+								$table.innerHTML = '';
+								
+								reviewList.forEach(review => {
+									const $tr = document.createElement('tr');
+									const $reviewContentTd = document.createElement('td');
+									const $reviewRegistDateTd = document.createElement('td');
+									const $buttonTd = document.createElement('td');
+									
+									$reviewContentTd.textContent = review.reviewContent;
+									$reviewRegistDateTd.textContent = review.reviewRegistDate;
+									
+									$buttonTd.innerHTML = `<button type='button' onclick='deleteReview(${review.reviewCode})' class="buttonRedSmall">삭제</button>`;
+									$tr.append($reviewContentTd, $reviewRegistDateTd, $buttonTd);
+									$table.append($tr);
+									
+								});
+							
+							}
+							
+						</script>
+                     </div>
+	                   	<!-- Footer -->
+			            <footer class="sticky-footer bg-white">
+			                <div class="container my-auto">
+			                    <div class="copyright text-center my-auto">
+			                        <span>Copyright &copy; Juyoung Website 2022</span>
+			                    </div>
+			                </div>
+			            </footer>
+			            <!-- End of Footer -->
+                 </div>
+             </div>
+               <!-- Bootstrap core JavaScript-->
+			    <script src="vendor/jquery/jquery.min.js"></script>
+			    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			
+			    <!-- Core plugin JavaScript-->
+			    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+			
+			    <!-- Custom scripts for all pages-->
+			    <script src="js/sb-admin-2.min.js"></script>
+             
+</body>
+
+</html>
