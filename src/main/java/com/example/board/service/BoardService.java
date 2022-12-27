@@ -4,6 +4,8 @@ package com.example.board.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +21,6 @@ import com.example.board.entity.Review;
 import com.example.board.repository.BoardRepository;
 import com.example.board.repository.ReviewRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
