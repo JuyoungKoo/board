@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/boardRegist.css}">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -52,12 +53,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>게시글목록</span></a>
             </li>
-              <!-- Nav Item - Charts -->
-            <li class="nav-item" onclick="location.href='/boardRegist'">
-                <a class="nav-link">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>게시글등록</span></a>
-            </li>
+             
              <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -148,13 +144,12 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">게시판</h1>
-                    <p class="mb-4">게시판을 자유롭게 작성해주세요!!</p>
-
+                   <button onclick="location.href='/boardRegist'" class="registButtonBlue">게시글등록</button>
+                 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Board</h6>
+                        <div class="card-header py-3"> 
+                        	<h3>게시판목록</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
