@@ -37,7 +37,6 @@ dependencies {
 	implementation('org.slf4j:jcl-over-slf4j')
 	implementation('ch.qos.logback:logback-classic')
 	
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
    
 }
 
