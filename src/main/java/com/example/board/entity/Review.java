@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -35,7 +37,7 @@ public class Review {
 	@Column(name="REVIEW_STATUS")
 	private String reviewStatus;
 	
-	@Column(name = "REF_BOARD_CODE")
+	@Column(name ="REF_BOARD_CODE")
 	private Long refBoardCode;
 	
 

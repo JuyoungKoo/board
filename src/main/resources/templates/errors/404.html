@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" th:href="@{/css/boardRegist.css}">
+<title>404 Error</title>
+</head>
+<body>
+	<h1 align="center">페이지를 찾을 수 없습니다.</h1>
+	<div align="center">
+            CODE: <span th:text="${code}"></span><br>
+            MSG: <span th:text="${msg}"></span><br>
+            TIMESTAMP: <span th:text="${timestamp}"></span><br>
+	</div>
+	<div align="center" style="margin-top:20px;">
+		<button type="button"onclick="location.href='/boardList'" class="buttonBlue">목록</button>
+	</div>
+</body>
+</html>

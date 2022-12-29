@@ -72,7 +72,6 @@ public class BoardService {
 		
 		Board board = boardRepository.findById(boardCode).get();
 				
-		
 		return modelMapper.map(board, BoardDto.class);
 	}
 
